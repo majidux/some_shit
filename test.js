@@ -501,23 +501,56 @@ const { performance } = require('perf_hooks');
 //   })
 // );
 
-const promise1 = Promise.resolve(3);
-const promise2 = new Promise((resolve, reject) =>
-  setTimeout(reject, 100, 'foo')
-);
-const promises = [promise1, promise2];
+// const promise1 = Promise.resolve(3);
+// const promise2 = new Promise((resolve, reject) =>
+//   setTimeout(reject, 100, 'foo')
+// );
+// const promises = [promise1, promise2];
 
-const j = async () => {
-  try {
-    const result = Promise.allSettled(promises).then((res) => {
-      console.log(res);
-    });
+// const j = async () => {
+//   try {
+//     const result = Promise.allSettled(promises).then((res) => {
+//       console.log(res);
+//     });
 
-    return result;
-  } catch (e) {}
-};
+//     return result;
+//   } catch (e) {}
+// };
 //then((results) => results.forEach((result) => console.log(result.status)));
-console.log(j());
+// console.log(j());
 // expected output:
 // "fulfilled"
 // "rejected"
+
+// function lastDigit(as) {
+//   if (as.length === 1) return 1;
+//   const arr = JSON.parse(JSON.stringify(as));
+//   const second = arr.slice(arr.length - 1)[0];
+//   const first = arr.slice(arr.length - 2)[0];
+//   const res = BigInt(second) ** BigInt(first);
+//   const res2 = BigInt(4) ** BigInt(216);
+//   arr.pop();
+//   arr.pop();
+//   const newArr = [...arr, res.toString()];
+//   if (newArr.length > 1) {
+//     return lastDigit(newArr);
+//   }
+//   const getLastDigit = (num) => +(num + '').slice(-1);
+//   return BigInt(getLastDigit(newArr[0]));
+// }
+
+// console.log(lastDigit([12, 30, 21]));
+
+// const abs = (num) => Math.abs(num);
+
+// const isDivideBy = (number, a, b) =>
+//   abs(number) % abs(a) && abs(number) % abs(b);
+
+// function sumFibs(num) {
+//   return fibonacciSequence(num)
+//     .filter((n) => n % 2 === 0)
+//     .reduce((cur, acc) => cur + acc, 0);
+// }
+
+// const sumFibs = (n, a = 1, b = 1, sum = 0) =>
+//   n <= 0 ? sum : sumFibs(n - 1, b, a + b, sum + (a % 2 == 0 ? a : 0));
